@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Coverage",
+      "setup": "cd lab2",
+      "run": "pytest --cov .",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}

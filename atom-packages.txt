@@ -1,0 +1,5 @@
+linter
+linter-pycodestyle
+linter-pyflakes
+linter-pylint
+python-autopep8
