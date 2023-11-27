@@ -1,9 +1,9 @@
 {
   "tests": [
     {
-      "name": "Coverage",
-      "setup": "cd lab2",
-      "run": "pytest --cov .",
+      "name": "Coverage 20210219",
+      "setup": "sudo -H pip3 install pytest pytest-cov",
+      "run": "cd lab2; pytest --cov . --cov-report term-missing --cov-fail-under=100",
       "input": "",
       "output": "",
       "comparison": "included",
