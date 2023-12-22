@@ -35,14 +35,14 @@ def test_encode_decode(test_input):
     assert(mycrypt.decode(mycrypt.encode(test_input))) == test_input
 
 
-@pytest.mark.parametrize("invalid_input", ['+','åäö'])
+@pytest.mark.parametrize("invalid_input", ['+','åäö','1'*1001])
 def test_invalid_char(invalid_input):
     '''Invalid characters should result in ValueError'''
     with pytest.raises(ValueError):
         mycrypt.encode(invalid_input)
 
 
-@pytest.mark.parametrize("invalid_input", [])
+@pytest.mark.parametrize("invalid_input", [1, 1.5, True, [1], (1), {1},{'a':1}, None])
 def test_invalid_types(invalid_input):
     '''Invalid parameter types should raise TypeError'''
     with pytest.raises(TypeError):
@@ -59,7 +59,7 @@ def test_timing():
     Hint: pad your string to max length and only return wanted length
     '''
     timing1 = min(timeit.repeat('mycrypt.encode("a")',
-                                'import mycrypt', repeat=3, number=30))
+                                'import mycrypt', repeat=3, number=63))
     timing2 = min(timeit.repeat('mycrypt.encode("a"*1000)',
-                                'import mycrypt', repeat=3, number=30))
+                                'import mycrypt', repeat=3, number=63))
     assert 0.95 * timing2 < timing1 < 1.05 * timing2
